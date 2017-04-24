@@ -5,22 +5,23 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class player : MonoBehaviour {
 	FirstPersonController firstPersonController;
+	GameObject camera;
 	// Use this for initialization
 	void Start () {
 		firstPersonController = GetComponent<FirstPersonController> ();
-
+		camera = transform.FindChild ("FirstPersonCharacter").gameObject;
 
 	}
 
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKey("c")){
-			transform.localScale = new Vector3 (1f, 1.2f, 1f);
+			camera.transform.position += new Vector3 (0f, -1f, 0f);
 			firstPersonController.m_WalkSpeed = 2f;
 
 	}
 		if (Input.GetKeyUp ("c")) {
-			transform.localScale = new Vector3 (1f, 1.6f, 1f);
+			camera.transform.position += new Vector3 (0f, 0, 0f);
 			firstPersonController.m_WalkSpeed = 5f;
 		}
 }
