@@ -1,32 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class player : MonoBehaviour {
-
+	FirstPersonController firstPersonController;
 	// Use this for initialization
 	void Start () {
-		
+		firstPersonController = GetComponent<FirstPersonController> ();
+
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKey("c")){
-			transform.position += new Vector3 (0f, -1f, 0f);
-			if (Input.GetKey ("up")) {
-				transform.position += new Vector3 (0.001f, 0f, 0f)*Time.deltaTime;
-			}
-			if (Input.GetKey ("down")) {
-				transform.position += new Vector3 (-0.001f, 0f, 0f)*Time.deltaTime;
-			}
-			if (Input.GetKey ("right")) {
-				transform.position += new Vector3 (0f, 0.001f, 0f)*Time.deltaTime;
-			}
-			if (Input.GetKey ("left")) {
-				transform.position += new Vector3 (0f, -0.001f, 0f)*Time.deltaTime;
-			}
-
+			transform.localScale = new Vector3 (1f, 1.2f, 1f);
+			firstPersonController.m_WalkSpeed = 2f;
 
 	}
+		if (Input.GetKeyUp ("c")) {
+			transform.localScale = new Vector3 (1f, 1.6f, 1f);
+			firstPersonController.m_WalkSpeed = 5f;
+		}
 }
 }
