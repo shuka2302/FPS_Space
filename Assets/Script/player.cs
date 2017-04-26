@@ -10,19 +10,15 @@ public class player : MonoBehaviour {
 	void Start () {
 		firstPersonController = GetComponent<FirstPersonController> ();
 		camera = transform.FindChild ("FirstPersonCharacter").gameObject;
-
 	}
 
 	// Update is called once per frame
 	void Update () {
+		firstPersonController.m_WalkSpeed = 5f;
 		if(Input.GetKey("c")){
 			camera.transform.position += new Vector3 (0f, -1f, 0f);
 			firstPersonController.m_WalkSpeed = 2f;
 
 	}
-		if (Input.GetKeyUp ("c")) {
-			camera.transform.position += new Vector3 (0f, 0, 0f);
-			firstPersonController.m_WalkSpeed = 5f;
-		}
-}
+	}
 }
