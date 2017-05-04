@@ -42,6 +42,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+		public ParticleSystem sparkle;
+		public ParticleSystem sparkle2;
+		public AudioClip fire;
+		AudioSource audioSource;
+		bool play;
+
         // Use this for initialization
         private void Start()
         {
@@ -55,6 +61,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+
+			audioSource = GetComponent<AudioSource> ();
+			play = true;
         }
 
 
@@ -81,7 +90,21 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
-        }
+
+			if (Input.GetMouseButtonDown (0) && play == true) {
+				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+				RaycastHit hit = new RaycastHit ();
+
+				if (Physics.Raycast (ray, out hit)) {
+					sparkle.Emit (1);
+					sparkle2.transform.position = hit.point;
+					sparkle2.Emit (1);
+					audioSource.PlayOneShot (fire);
+					play = false;
+					Invoke ("shot", 0.5f);
+				}
+			}
+		}
 
 
         private void PlayLandingSound()
@@ -255,5 +278,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
+		void shot(){
+			play = true;
+		}
     }
 }
