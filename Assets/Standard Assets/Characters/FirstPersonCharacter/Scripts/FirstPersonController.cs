@@ -90,6 +90,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
 
+			m_WalkSpeed = 5f;
+			if (Input.GetKey ("c")) {
+				Camera.main.transform.position += new Vector3 (0f, -1f, 0f);
+				m_WalkSpeed = 2f;
+			}
+
 			coolTime -= Time.deltaTime;
 
 			if (Input.GetMouseButtonDown (0) ) {
