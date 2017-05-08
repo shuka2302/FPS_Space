@@ -46,7 +46,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		public ParticleSystem sparkle2;
 		public AudioClip fire;
 		AudioSource audioSource;
-		bool play;
+		float coolTime;
 
         // Use this for initialization
         private void Start()
@@ -63,7 +63,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_MouseLook.Init(transform , m_Camera.transform);
 
 			audioSource = GetComponent<AudioSource> ();
-			play = true;
         }
 
 
@@ -91,7 +90,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
 
-			if (Input.GetMouseButtonDown (0) && play == true) {
+			coolTime -= Time.deltaTime;
+
+			if (Input.GetMouseButtonDown (0) ) {
+				if(coolTime<=0f){
 				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 				RaycastHit hit = new RaycastHit ();
 
@@ -100,10 +102,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 					sparkle2.transform.position = hit.point;
 					sparkle2.Emit (1);
 					audioSource.PlayOneShot (fire);
-					play = false;
-					Invoke ("shot", 0.5f);
+					coolTime = 0.5f;
 				}
 			}
+		}
 		}
 
 
@@ -278,8 +280,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
-		void shot(){
-			play = true;
-		}
+
     }
 }
