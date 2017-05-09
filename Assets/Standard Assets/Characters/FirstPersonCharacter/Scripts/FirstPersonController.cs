@@ -46,7 +46,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		public ParticleSystem sparkle2;
 		public AudioClip fire;
 		AudioSource audioSource;
-		float coolTime;
+		public float coolTime;
 
         // Use this for initialization
         private void Start()
@@ -108,7 +108,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 					sparkle2.transform.position = hit.point;
 					sparkle2.Emit (1);
 					audioSource.PlayOneShot (fire);
-					coolTime = 0.5f;
+					coolTime = 2f;
 				}
 			}
 		}
