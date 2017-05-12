@@ -42,11 +42,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
-		public ParticleSystem sparkle;
-		public ParticleSystem sparkle2;
-		public AudioClip fire;
-		AudioSource audioSource;
-		public float coolTime;
+
 
         // Use this for initialization
         private void Start()
@@ -62,7 +58,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
 
-			audioSource = GetComponent<AudioSource> ();
+
         }
 
 
@@ -96,22 +92,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				m_WalkSpeed = 2f;
 			}
 
-			coolTime -= Time.deltaTime;
 
-			if (Input.GetMouseButtonDown (0) ) {
-				if(coolTime<=0f){
-				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-				RaycastHit hit = new RaycastHit ();
-
-				if (Physics.Raycast (ray, out hit)) {
-					sparkle.Emit (1);
-					sparkle2.transform.position = hit.point;
-					sparkle2.Emit (1);
-					audioSource.PlayOneShot (fire);
-					coolTime = 2f;
-				}
-			}
-		}
 		}
 
 
