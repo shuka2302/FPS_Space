@@ -11,7 +11,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
     public class FirstPersonController : MonoBehaviour
     {
         [SerializeField] private bool m_IsWalking;
-        [SerializeField] public float m_WalkSpeed;
+        [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
         [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
         [SerializeField] private float m_JumpSpeed;
@@ -41,6 +41,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
+
 
 
         // Use this for initialization
@@ -86,12 +87,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
 
 			m_WalkSpeed = 5f;
-			if(Input.GetKey("c")){
+			if (Input.GetKey ("c")) {
 				Camera.main.transform.position += new Vector3 (0f, -1f, 0f);
 				m_WalkSpeed = 2f;
-
 			}
-        }
+
+
+		}
 
 
         private void PlayLandingSound()
@@ -265,5 +267,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
+
     }
 }
