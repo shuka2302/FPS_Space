@@ -12,6 +12,7 @@ public class GunController : MonoBehaviour {
 
 	float Bullet = 30f;
 	float BulletBox = 150f;
+	[SerializeField] private AudioClip reload;
 
 	// Use this for initialization
 	void Start () {
@@ -47,6 +48,7 @@ public class GunController : MonoBehaviour {
 		if (BulletBox == 0f && Input.GetKey ("r")) {
 			Bullet = 30f;
 			BulletBox = 150f;
+			audioSource.PlayOneShot (reload);
 		}
 	}
 }
