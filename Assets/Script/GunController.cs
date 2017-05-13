@@ -22,10 +22,15 @@ public class GunController : MonoBehaviour {
 	void Update () {
 		coolTime += Time.deltaTime;
 
-		if (Input.GetMouseButtonDown (0)) {
+		if (Input.GetMouseButtonDown (0) && BulletBox > 0f) {
 			if (coolTime > ct) {
 				coolTime = 0f;
 
+				Bullet--;
+				if (Bullet == 0f) {
+					BulletBox--;
+					Bullet = 30f;
+				}
 
 				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 				RaycastHit hit = new RaycastHit ();
