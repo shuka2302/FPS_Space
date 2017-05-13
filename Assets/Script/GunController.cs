@@ -11,7 +11,7 @@ public class GunController : MonoBehaviour {
 	float coolTime=0f;
 
 	float Bullet = 30f;
-
+	float BulletBox = 150f;
 
 	// Use this for initialization
 	void Start () {
