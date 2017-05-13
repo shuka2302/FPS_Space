@@ -44,5 +44,9 @@ public class GunController : MonoBehaviour {
 				}
 			}
 		}
+		if (BulletBox == 0f && Input.GetKey ("r")) {
+			Bullet = 30f;
+			BulletBox = 150f;
+		}
 	}
 }
