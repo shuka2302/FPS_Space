@@ -10,6 +10,9 @@ public class GunController : MonoBehaviour {
 	AudioSource audioSource;
 	float coolTime=0f;
 
+	float Bullet = 30f;
+
+
 	// Use this for initialization
 	void Start () {
 		audioSource = GetComponent<AudioSource> ();
@@ -19,19 +22,20 @@ public class GunController : MonoBehaviour {
 	void Update () {
 		coolTime += Time.deltaTime;
 
-		if (Input.GetMouseButtonDown (0) ) {
+		if (Input.GetMouseButtonDown (0)) {
 			if (coolTime > ct) {
 				coolTime = 0f;
+
+
 				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 				RaycastHit hit = new RaycastHit ();
-
 
 				if (Physics.Raycast (ray, out hit)) {
 					sparkle.Emit (1);
 					sparkle2.transform.position = hit.point;
 					sparkle2.Emit (1);
 					audioSource.PlayOneShot (fire);
-					//print (ct);
+
 				}
 			}
 		}
