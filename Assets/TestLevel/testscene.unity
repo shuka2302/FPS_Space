@@ -36431,7 +36431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e037361717bc643bc0f5dc554a2be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ct: 0.5
+  ct: 0
   sparkle: {fileID: 247899473}
   sparkle2: {fileID: 809902346}
   fire: {fileID: 8300000, guid: 8602b7d5cd15c1943a50aa53f171c8cf, type: 3}

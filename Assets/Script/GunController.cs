@@ -46,10 +46,16 @@ public class GunController : MonoBehaviour {
 	}
 
 	void Reload(){
+		float BulletR = 30f - Bullet;
 		if (BulletBox > 0f) {
-			Bullet++;
-			BulletBox--;
 			audioSource.PlayOneShot (reload);
+			if (BulletR <= BulletBox) {
+				Bullet = 30f;
+				BulletBox -= BulletR;
+			} else if (BulletR > BulletBox) {
+				Bullet += BulletBox;
+				BulletBox = 0f;
+			}
 		}
 	}
 }
