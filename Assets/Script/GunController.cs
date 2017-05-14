@@ -10,6 +10,10 @@ public class GunController : MonoBehaviour {
 	AudioSource audioSource;
 	float coolTime=0f;
 
+	[SerializeField]private float Bullet = 30f;
+	[SerializeField]private float BulletBox = 150f;
+	[SerializeField] private AudioClip reload;
+
 	// Use this for initialization
 	void Start () {
 		audioSource = GetComponent<AudioSource> ();
@@ -19,20 +23,38 @@ public class GunController : MonoBehaviour {
 	void Update () {
 		coolTime += Time.deltaTime;
 
-		if (Input.GetMouseButtonDown (0) ) {
+		if (Input.GetMouseButtonDown (0) && Bullet > 0f) {
 			if (coolTime > ct) {
 				coolTime = 0f;
+
+				Bullet--;
+
 				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 				RaycastHit hit = new RaycastHit ();
-
 
 				if (Physics.Raycast (ray, out hit)) {
 					sparkle.Emit (1);
 					sparkle2.transform.position = hit.point;
 					sparkle2.Emit (1);
 					audioSource.PlayOneShot (fire);
-					//print (ct);
 				}
+			}
+		}
+		if (Bullet < 30f && Input.GetKeyDown ("r")) {
+			Reload ();
+		}
+	}
+
+	void Reload(){
+		float BulletR = 30f - Bullet;
+		if (BulletBox > 0f) {
+			audioSource.PlayOneShot (reload);
+			if (BulletR <= BulletBox) {
+				Bullet = 30f;
+				BulletBox -= BulletR;
+			} else if (BulletR > BulletBox) {
+				Bullet += BulletBox;
+				BulletBox = 0f;
 			}
 		}
 	}

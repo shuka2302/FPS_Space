@@ -26405,25 +26405,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1386082232}
   m_Mesh: {fileID: 4300396, guid: 70bd327581f110b4a936db6df5f9ed54, type: 3}
---- !u!1 &1389491235 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
-  m_PrefabInternal: {fileID: 491539805}
---- !u!114 &1389491241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1389491235}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6e037361717bc643bc0f5dc554a2be9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ct: 100
-  sparkle: {fileID: 247899473}
-  sparkle2: {fileID: 809902346}
-  fire: {fileID: 8300000, guid: 8602b7d5cd15c1943a50aa53f171c8cf, type: 3}
 --- !u!1 &1390379535
 GameObject:
   m_ObjectHideFlags: 0
@@ -36454,6 +36435,9 @@ MonoBehaviour:
   sparkle: {fileID: 247899473}
   sparkle2: {fileID: 809902346}
   fire: {fileID: 8300000, guid: 8602b7d5cd15c1943a50aa53f171c8cf, type: 3}
+  Bullet: 30
+  BulletBox: 150
+  reload: {fileID: 8300000, guid: 3c5c1d4d7b9307c458890a4beb12e4ae, type: 3}
 --- !u!1001 &1937857135
 Prefab:
   m_ObjectHideFlags: 0
