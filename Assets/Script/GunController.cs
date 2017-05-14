@@ -14,9 +14,13 @@ public class GunController : MonoBehaviour {
 	[SerializeField]private float BulletBox = 150f;
 	[SerializeField] private AudioClip reload;
 
+	[SerializeField]private GameObject targetObject;
+	Target target;
+
 	// Use this for initialization
 	void Start () {
 		audioSource = GetComponent<AudioSource> ();
+		target = targetObject.GetComponent<Target> ();
 	}
 	
 	// Update is called once per frame
@@ -37,6 +41,11 @@ public class GunController : MonoBehaviour {
 					sparkle2.transform.position = hit.point;
 					sparkle2.Emit (1);
 					audioSource.PlayOneShot (fire);
+					GameObject selectedObj = hit.collider.gameObject;
+					if (selectedObj = GameObject.FindGameObjectWithTag ("Target")) {
+						target.targetHit ();
+					
+					}
 				}
 			}
 		}
