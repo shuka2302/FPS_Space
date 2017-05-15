@@ -14,13 +14,15 @@ public class GunController : MonoBehaviour {
 	[SerializeField]private float BulletBox = 150f;
 	[SerializeField] private AudioClip reload;
 
-	[SerializeField]private GameObject targetObject;
-	Target target;
+	GameObject selectedObj;
+	[SerializeField]private GameObject target;
+	Target targetS;
+	[SerializeField]private GameObject HeadMarker;
 
 	// Use this for initialization
 	void Start () {
 		audioSource = GetComponent<AudioSource> ();
-		target = targetObject.GetComponent<Target> ();
+		targetS = target.GetComponent<Target> ();
 	}
 	
 	// Update is called once per frame
@@ -41,11 +43,23 @@ public class GunController : MonoBehaviour {
 					sparkle2.transform.position = hit.point;
 					sparkle2.Emit (1);
 					audioSource.PlayOneShot (fire);
-					GameObject selectedObj = hit.collider.gameObject;
-					if (selectedObj = GameObject.FindGameObjectWithTag ("Target")) {
-						target.targetHit ();
-					
+
+					selectedObj = hit.collider.gameObject;
+					Vector3 hitPoint = hit.point;
+					Vector3 marker = HeadMarker.transform.position;
+					float dis = Vector3.Distance (hitPoint, marker);
+					if (selectedObj.tag=="Target") {
+						targetS.targetHit ();
+						if (dis<=0.2f) {
+							targetS.pt += 30f;
+						} else if (dis <= 0.7f) {
+							targetS.pt += 20f;
+						} else {
+							targetS.pt += 10f;
+						}
 					}
+						
+							
 				}
 			}
 		}
