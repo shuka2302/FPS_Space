@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Target : MonoBehaviour {
-	[SerializeField]private float life=5f;
+	float life=5f;
 	Animator anim;
 	public float pt=0f;
 
@@ -25,8 +25,14 @@ public class Target : MonoBehaviour {
 	life--;
 		if(life==0f){
 			anim.SetBool("broken",true);
+			Invoke ("GetUp", 10f);
 		}
+
 	}
 
+	void GetUp (){
+		anim.SetBool ("broken", false);
+		life = 5f;
+	}
 	}
 
