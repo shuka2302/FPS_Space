@@ -22,9 +22,9 @@ public class Target : MonoBehaviour {
 		}
 
 	public void targetHit(){
-	life--;
-		if(life==0f){
-			anim.SetBool("broken",true);
+	    life--;
+		if (life == 0f) {
+			anim.SetBool ("broken", true);
 			Invoke ("GetUp", 10f);
 		}
 
