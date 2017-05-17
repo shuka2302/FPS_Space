@@ -10,8 +10,8 @@ public class GunController : MonoBehaviour {
 	AudioSource audioSource;
 	float coolTime=0f;
 
-	[SerializeField]private float Bullet = 30f;
-	[SerializeField]private float BulletBox = 150f;
+	public float Bullet = 30f;
+	public float BulletBox = 150f;
 	[SerializeField] private AudioClip reload;
 
 	GameObject selectedObj;
