@@ -11,15 +11,11 @@ public class UI : MonoBehaviour {
 
 	float time=90.0f;
 
-	[SerializeField]private GameObject gun;
-	GunController gunController;
-	[SerializeField]private GameObject targetObject;
-	Target target;
+	[SerializeField]private GunController gunController;
+	[SerializeField]private Target target;
 
 	// Use this for initialization
 	void Start () {
-		gunController = gun.GetComponent<GunController> ();
-		target = targetObject.GetComponent<Target> ();
 	}
 	
 	// Update is called once per frame
