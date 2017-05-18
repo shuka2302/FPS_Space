@@ -8,6 +8,7 @@ public class UI : MonoBehaviour {
 	[SerializeField]private Text bulletUI;
 	[SerializeField]private Text bulletBoxUI;
 	[SerializeField]private Text point;
+	[SerializeField]private Image snipe;
 
 	float time=90.0f;
 
@@ -28,5 +29,10 @@ public class UI : MonoBehaviour {
 		bulletUI.text = "Bullet:" + gunController.Bullet + "/30";
 		bulletBoxUI.text = "BulletBox:" + gunController.BulletBox;
 		point.text = "Pt:" + target.pt;
+
+		snipe.enabled = false;
+		if (Input.GetMouseButton (1)) {
+			snipe.enabled = true;
+		}
 	}
 }
