@@ -3,8 +3,6 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
-using UnityStandardAssets.ImageEffects;
-using UnityEngine.UI;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
@@ -44,8 +42,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
-		[SerializeField]private DepthOfField depth;
-		[SerializeField]private Image snipe;
 
         // Use this for initialization
         private void Start()
@@ -61,8 +57,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
 
-			snipe.enabled = false;
-			depth.enabled = false;
 
         }
 
@@ -97,25 +91,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				m_WalkSpeed = 2f;
 			}
 
-			if (Input.GetMouseButtonDown (1)) {
-				if (snipe.enabled == false) {
-					SniperMode ();
-				} else {
-					NormalMode ();
-				}
-			}
-		}
-
-		void SniperMode(){
-			snipe.enabled=true;
-			depth.enabled=true;
-			Camera.main.transform.position += new Vector3 (0f, 0f, 3f);
-		}
-
-		void NormalMode(){
-			snipe.enabled = false;
-			depth.enabled = false;
-			Camera.main.transform.position += new Vector3 (0f, 0f, -3f);
 		}
 
 
