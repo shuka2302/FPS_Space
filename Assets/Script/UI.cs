@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.ImageEffects;
 
 public class UI : MonoBehaviour {
 	[SerializeField]private Text timer;
@@ -29,4 +30,5 @@ public class UI : MonoBehaviour {
 		bulletBoxUI.text = "BulletBox:" + gunController.BulletBox;
 		point.text = "Pt:" + target.pt;
 	}
+
 }

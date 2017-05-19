@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.ImageEffects;
+using UnityEngine.UI;
 
 public class GunController : MonoBehaviour {
 	[SerializeField]private float ct;
@@ -19,10 +21,18 @@ public class GunController : MonoBehaviour {
 	Target targetS;
 	[SerializeField]private GameObject HeadMarker;
 
+	//[SerializeField]private DepthOfField depth;
+	[SerializeField]private Image snipe;
+
+
 	// Use this for initialization
 	void Start () {
 		audioSource = GetComponent<AudioSource> ();
 		targetS = target.GetComponent<Target> ();
+
+		snipe.enabled = false;
+		//depth.enabled = false;
+
 	}
 	
 	// Update is called once per frame
@@ -66,6 +76,17 @@ public class GunController : MonoBehaviour {
 		if (Bullet < 30f && Input.GetKeyDown ("r")) {
 			Reload ();
 		}
+
+		if (Input.GetMouseButtonDown (1)) {
+			if (snipe.enabled == false) {
+				Camera.main.fieldOfView = 45;
+				snipe.enabled = true;
+			} else {
+				Camera.main.fieldOfView = 60;
+				snipe.enabled = false;
+			}
+		}
+
 	}
 
 	void Reload(){
@@ -81,4 +102,7 @@ public class GunController : MonoBehaviour {
 			}
 		}
 	}
+
+
+
 }

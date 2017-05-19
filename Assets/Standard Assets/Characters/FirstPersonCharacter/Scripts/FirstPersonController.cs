@@ -43,7 +43,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private AudioSource m_AudioSource;
 
 
-
         // Use this for initialization
         private void Start()
         {
@@ -91,7 +90,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				Camera.main.transform.position += new Vector3 (0f, -1f, 0f);
 				m_WalkSpeed = 2f;
 			}
-
 
 		}
 
